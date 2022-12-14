@@ -1,5 +1,7 @@
 import 'package:cse_hackathon_2022/widget/NavigatePage.dart';
-import 'package:cse_hackathon_2022/widget/login.dart';
+import 'package:cse_hackathon_2022/widget/login/login/login.dart';
+import 'package:cse_hackathon_2022/widget/login/signup.dart';
+import 'package:cse_hackathon_2022/widget/profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:xtyle/xtyle.dart';
@@ -48,6 +50,18 @@ class _AuthCheckState extends State<AuthCheck> {
                   context,
                   CupertinoPageRoute(
                     builder: (context) => const LoginPage(),
+                  ),
+                );
+              },
+            ),
+
+            CupertinoButton(
+              child: const Text("figma to flutter"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                    builder: (context) => const SignUpPage(),
                   ),
                 );
               },

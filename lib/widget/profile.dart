@@ -11,13 +11,8 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16),
-        child: Container(
-          color: Colors.grey,
-        ),
-      ),
+      appBar: AppBar(title: Text("내 정보"),),
+      body: Container(),
     );
   }
 }
