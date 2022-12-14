@@ -11,7 +11,12 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(45.0),
+        child: AppBar(
+          title: Text('홈'),
+        ),
+      ),
       body: Container(),
     );
   }

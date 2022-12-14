@@ -1,4 +1,5 @@
 import 'package:cse_hackathon_2022/widget/NavigatePage.dart';
+import 'package:cse_hackathon_2022/widget/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:xtyle/xtyle.dart';
@@ -11,14 +12,6 @@ class AuthCheck extends StatefulWidget {
 }
 
 class _AuthCheckState extends State<AuthCheck> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,14 +30,28 @@ class _AuthCheckState extends State<AuthCheck> {
               'Super프리미엄 리미티드Edition',
               style: TextStyle(fontSize: 16.0, color: Colors.black),
             ),
-            CupertinoButton(child: const Text("네비게이션 페이지 이동"), onPressed: (){
-              Navigator.push(
-                context,
-                CupertinoPageRoute(
-                  builder: (context) => const NavigatePage(),
-                ),
-              );
-            })
+            CupertinoButton(
+              child: const Text("메인 페이지 이동"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                    builder: (context) => const NavigatePage(),
+                  ),
+                );
+              },
+            ),
+            CupertinoButton(
+              child: const Text("로그인 페이지 이동"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                    builder: (context) => const LoginPage(),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),
