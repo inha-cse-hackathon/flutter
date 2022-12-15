@@ -20,17 +20,22 @@ class EmailSignInModel with ChangeNotifier {
   bool isAutoLogin = true;
   bool isSaveID = true;
 
+  bool warning = false;
+  bool onceWrong = false;
+
   String get id => _username;
 
   String get password => _password;
 
   setID(String username) {
     _username = username;
+    warning=false;
     notifyListeners();
   }
 
   setPassword(String password) {
     _password = password;
+    warning=false;
     notifyListeners();
   }
 
@@ -47,6 +52,10 @@ class EmailSignInModel with ChangeNotifier {
   login() async {
     print('id      : $id');
     print('password: $password');
+
+    warning = true;
+    onceWrong = true;
+    notifyListeners();
     //"test123", "qwe12345&&");
 
     // try {

@@ -1,5 +1,5 @@
 import 'package:cse_hackathon_2022/widget/NavigatePage.dart';
-import 'package:cse_hackathon_2022/widget/login/login/login.dart';
+import 'package:cse_hackathon_2022/widget/login/login/login_page.dart';
 import 'package:cse_hackathon_2022/widget/login/signup.dart';
 import 'package:cse_hackathon_2022/widget/profile.dart';
 import 'package:flutter/cupertino.dart';

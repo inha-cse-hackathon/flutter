@@ -4,6 +4,50 @@ import 'package:provider/provider.dart';
 
 import 'login_model.dart';
 
+class LoginInputs extends StatelessWidget {
+  const LoginInputs({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        LoginField(
+          onChanged: (text) {
+            Provider.of<EmailSignInModel>(context, listen: false).setID(text);
+          },
+          onDelete: () {
+            Provider.of<EmailSignInModel>(context, listen: false).setID('');
+          },
+          hint: "아이디를 입력하세요",
+        ),
+        const SizedBox(height: 5),
+        LoginField(
+          onChanged: (text) {
+            Provider.of<EmailSignInModel>(context, listen: false)
+                .setPassword(text);
+          },
+          onDelete: () {
+            Provider.of<EmailSignInModel>(context, listen: false)
+                .setPassword('');
+          },
+          hint: "비밀번호를 입력하세요",
+          obscure: true,
+        ),
+        AnimatedContainer(
+          height: Provider.of<EmailSignInModel>(context).warning ? 20 : 0,
+          duration: const Duration(seconds: 1),
+          curve: Curves.easeOutQuart,
+          child: const Text(
+            "아이디 또는 비밀번호가 일치하지 않습니다.",
+            style: TextStyle(fontSize: 14, color: Color(0xffFF3122)),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class DeleteButton extends StatelessWidget {
   const DeleteButton({
     Key? key,
@@ -27,9 +71,11 @@ class DeleteButton extends StatelessWidget {
             child: Container(
               width: 14,
               height: 14,
-              decoration: const BoxDecoration(
-                color: Color(0xffDBDBDB),
-                borderRadius: BorderRadius.all(Radius.circular(30)),
+              decoration: BoxDecoration(
+                color: Provider.of<EmailSignInModel>(context).warning
+                    ? const Color(0xffFFA6A6)
+                    : const Color(0xffDBDBDB),
+                borderRadius: const BorderRadius.all(Radius.circular(30)),
               ),
             ),
           ),
@@ -39,91 +85,49 @@ class DeleteButton extends StatelessWidget {
   }
 }
 
-class IdInput extends StatefulWidget {
-  const IdInput({Key? key}) : super(key: key);
+class LoginField extends StatefulWidget {
+  const LoginField({
+    Key? key,
+    this.obscure = false,
+    this.hint,
+    required this.onChanged,
+    required this.onDelete,
+  }) : super(key: key);
+
+  final bool obscure;
+  final String? hint;
+  final ValueChanged<String> onChanged;
+  final VoidCallback onDelete;
 
   @override
-  State<IdInput> createState() => _IdInputState();
+  State<LoginField> createState() => _LoginFieldState();
 }
 
-class _IdInputState extends State<IdInput> {
+class _LoginFieldState extends State<LoginField> {
   final TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Ink(
-      color: ColorStyle.background1,
+      color: Provider.of<EmailSignInModel>(context).warning
+          ? const Color(0xffFFE0DE)
+          : ColorStyle.background1,
       child: Row(
         children: [
           Expanded(
             child: TextField(
-              onChanged: (text) {
-                Provider.of<EmailSignInModel>(context, listen: false)
-                    .setID(text);
-              },
+              onChanged: widget.onChanged,
               controller: controller,
               style: Theme.of(context).textTheme.subtitle1,
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                contentPadding:
-                    EdgeInsets.only(top: 13, bottom: 14, left: 11, right: 8),
-                fillColor: Colors.grey,
-                hintText: "아이디를 입력하세요",
-                hintStyle: TextStyle(
-                  fontSize: 16,
-                  color: ColorStyle.text2,
-                  letterSpacing: -16 * 0.02,
-                ),
-              ),
-            ),
-          ),
-          DeleteButton(
-            onclick: () {
-              Provider.of<EmailSignInModel>(context, listen: false).setID('');
-              controller.clear();
-            },
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class PassWordInput extends StatefulWidget {
-  const PassWordInput({Key? key}) : super(key: key);
-
-  @override
-  State<PassWordInput> createState() => _PassWordInputState();
-}
-
-class _PassWordInputState extends State<PassWordInput> {
-  final TextEditingController controller = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Ink(
-      color: ColorStyle.background1,
-      child: Row(
-        children: [
-          Expanded(
-            child: TextField(
-              onChanged: (text) {
-                Provider.of<EmailSignInModel>(context, listen: false)
-                    .setPassword(text);
-              },
-              controller: controller,
-              style: Theme.of(context).textTheme.subtitle1,
-              obscureText: true,
+              obscureText: widget.obscure,
               obscuringCharacter: "*",
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 border: InputBorder.none,
                 focusedBorder: InputBorder.none,
                 contentPadding:
-                    EdgeInsets.only(top: 13, bottom: 14, left: 11, right: 8),
-                fillColor: Colors.grey,
-                hintText: "비밀번호를 입력하세요",
-                hintStyle: TextStyle(
+                    const EdgeInsets.only(top: 13, bottom: 14, left: 11, right: 8),
+                hintText: widget.hint,
+                hintStyle: const TextStyle(
                   fontSize: 16,
                   color: ColorStyle.text2,
                   letterSpacing: -16 * 0.02,
@@ -133,8 +137,7 @@ class _PassWordInputState extends State<PassWordInput> {
           ),
           DeleteButton(
             onclick: () {
-              Provider.of<EmailSignInModel>(context, listen: false)
-                  .setPassword('');
+              widget.onDelete();
               controller.clear();
             },
           ),

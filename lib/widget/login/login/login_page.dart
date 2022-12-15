@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'login_model.dart';
+import 'text_button.dart';
 import 'text_forms.dart';
 
 class LoginPage extends StatelessWidget {
@@ -45,11 +46,9 @@ class LoginPage extends StatelessWidget {
                     style: Theme.of(context).textTheme.headline2,
                   ),
                   const SizedBox(height: 25),
-                  const IdInput(),
-                  const SizedBox(height: 5),
-                  const PassWordInput(),
-
-                  const AddButton(),
+                  const LoginInputs(),
+                  // const AddButton(),
+                  const SizedBox(height: 20),
                   const SizedBox(height: 18),
                   LoginButton(
                     onclick: () {
@@ -57,11 +56,16 @@ class LoginPage extends StatelessWidget {
                           .login();
                     },
                   ),
+                  const SizedBox(height: 18),
+
+                  const ForgotBox(),
+
                   Flexible(
                     child: Container(
                         // color: Colors.blue,
                         ),
                   ),
+
                   const RegisterButton(),
                   const SizedBox(
                     height: 9,
@@ -73,6 +77,72 @@ class LoginPage extends StatelessWidget {
         }),
       ),
     );
+  }
+}
+
+class ForgotBox extends StatelessWidget {
+  const ForgotBox({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Provider.of<EmailSignInModel>(context).onceWrong
+        ? AnimatedContainer(
+            height: Provider.of<EmailSignInModel>(context).onceWrong ? 76 : 76,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: const BorderRadius.all(Radius.circular(3)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.4),
+                  blurRadius: 6,
+                  offset: const Offset(0, 3),
+                  // color: Color(0xff00D99E).withOpacity(.6),
+                ),
+              ],
+            ),
+            duration: const Duration(seconds: 1),
+            curve: Curves.fastOutSlowIn,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 12),
+                Text(
+                  "잠깐! 비밀번호를 잊으셨나요?",
+                  style: Theme.of(context).textTheme.bodyText2,
+                ),
+                const SizedBox(height: 3),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text(
+                      "아이디찾기 ",
+                      style: TextStyle(
+                        fontSize: 14,
+                        letterSpacing: 14 * 0.02,
+                        color: Color(0xff4992FF),
+                      ),
+                    ),
+                    Text(
+                      "혹은",
+                      style: TextStyle(
+                          fontSize: 14,
+                          letterSpacing: 14 * 0.02,
+                          color: ColorStyle.text2),
+                    ),
+                    Text(
+                      " 비밀번호 찾기",
+                      style: TextStyle(
+                        fontSize: 14,
+                        letterSpacing: 14 * 0.02,
+                        color: Color(0xff4992FF),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          )
+        : Container();
   }
 }
 
@@ -123,8 +193,7 @@ class LoginButton extends StatelessWidget {
 
 class CheckToggle extends StatelessWidget {
   const CheckToggle(
-      this.text,
-      {
+    this.text, {
     Key? key,
     required this.onclick,
     required this.activate,
@@ -175,10 +244,11 @@ class AddButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5.0),
+      padding: const EdgeInsets.symmetric(vertical: 0.0),
       child: Row(
         children: [
-          CheckToggle("자동로그인",
+          CheckToggle(
+            "자동로그인",
             activate: Provider.of<EmailSignInModel>(context).isAutoLogin,
             onclick: () {
               Provider.of<EmailSignInModel>(context, listen: false)
@@ -186,46 +256,16 @@ class AddButton extends StatelessWidget {
             },
           ),
           const SizedBox(width: 9),
-
           const SizedBox(width: 19),
           CheckToggle(
             "아이디 저장",
             activate: Provider.of<EmailSignInModel>(context).isSaveID,
             onclick: () {
-              Provider.of<EmailSignInModel>(context, listen: false).touchSaveID();
+              Provider.of<EmailSignInModel>(context, listen: false)
+                  .touchSaveID();
             },
           ),
         ],
-      ),
-    );
-  }
-}
-
-class TextMiniButton extends StatelessWidget {
-  const TextMiniButton(
-    this.text, {
-    Key? key,
-    required this.onclick,
-  }) : super(key: key);
-  final VoidCallback onclick;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Ink(
-      child: InkWell(
-        onTap: onclick,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4),
-          child: Text(
-            text,
-            style: const TextStyle(
-              fontSize: 14,
-              letterSpacing: 14 * 0.02,
-              color: ColorStyle.text2,
-            ),
-          ),
-        ),
       ),
     );
   }
@@ -242,6 +282,7 @@ class RegisterButton extends StatelessWidget {
         TextMiniButton(
           "회원가입",
           onclick: () {},
+          padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 4),
         ),
         Container(
           width: 1,
@@ -250,6 +291,7 @@ class RegisterButton extends StatelessWidget {
         ),
         TextMiniButton(
           "아이디찾기",
+          padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 4),
           onclick: () {},
         ),
         Container(
@@ -260,6 +302,7 @@ class RegisterButton extends StatelessWidget {
         TextMiniButton(
           "비밀번호 찾기",
           onclick: () {},
+          padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 4),
         ),
       ],
     );
