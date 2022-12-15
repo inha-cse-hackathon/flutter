@@ -80,71 +80,6 @@ class LoginPage extends StatelessWidget {
   }
 }
 
-class ForgotBox extends StatelessWidget {
-  const ForgotBox({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Provider.of<EmailSignInModel>(context).onceWrong
-        ? AnimatedContainer(
-            height: Provider.of<EmailSignInModel>(context).onceWrong ? 76 : 76,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: const BorderRadius.all(Radius.circular(3)),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.4),
-                  blurRadius: 6,
-                  offset: const Offset(0, 3),
-                  // color: Color(0xff00D99E).withOpacity(.6),
-                ),
-              ],
-            ),
-            duration: const Duration(seconds: 1),
-            curve: Curves.fastOutSlowIn,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const SizedBox(height: 12),
-                Text(
-                  "잠깐! 비밀번호를 잊으셨나요?",
-                  style: Theme.of(context).textTheme.bodyText2,
-                ),
-                const SizedBox(height: 3),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      "아이디찾기 ",
-                      style: TextStyle(
-                        fontSize: 14,
-                        letterSpacing: 14 * 0.02,
-                        color: Color(0xff4992FF),
-                      ),
-                    ),
-                    Text(
-                      "혹은",
-                      style: TextStyle(
-                          fontSize: 14,
-                          letterSpacing: 14 * 0.02,
-                          color: ColorStyle.text2),
-                    ),
-                    Text(
-                      " 비밀번호 찾기",
-                      style: TextStyle(
-                        fontSize: 14,
-                        letterSpacing: 14 * 0.02,
-                        color: Color(0xff4992FF),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          )
-        : Container();
-  }
-}
 
 class LoginButton extends StatelessWidget {
   const LoginButton({
@@ -271,6 +206,73 @@ class AddButton extends StatelessWidget {
   }
 }
 
+
+class ForgotBox extends StatelessWidget {
+  const ForgotBox({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Provider.of<EmailSignInModel>(context).onceWrong
+        ? AnimatedContainer(
+      height: Provider.of<EmailSignInModel>(context).onceWrong ? 76 : 76,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: const BorderRadius.all(Radius.circular(3)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.4),
+            blurRadius: 6,
+            offset: const Offset(0, 3),
+            // color: Color(0xff00D99E).withOpacity(.6),
+          ),
+        ],
+      ),
+      duration: const Duration(seconds: 1),
+      curve: Curves.fastOutSlowIn,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const SizedBox(height: 12),
+          Text(
+            "잠깐! 비밀번호를 잊으셨나요?",
+            style: Theme.of(context).textTheme.bodyText2,
+          ),
+          const SizedBox(height: 3),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Text(
+                "아이디찾기 ",
+                style: TextStyle(
+                  fontSize: 14,
+                  letterSpacing: 14 * 0.02,
+                  color: Color(0xff4992FF),
+                ),
+              ),
+              Text(
+                "혹은",
+                style: TextStyle(
+                    fontSize: 14,
+                    letterSpacing: 14 * 0.02,
+                    color: ColorStyle.text2),
+              ),
+              Text(
+                " 비밀번호 찾기",
+                style: TextStyle(
+                  fontSize: 14,
+                  letterSpacing: 14 * 0.02,
+                  color: Color(0xff4992FF),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    )
+        : Container();
+  }
+}
+
 class RegisterButton extends StatelessWidget {
   const RegisterButton({Key? key}) : super(key: key);
 
@@ -282,7 +284,12 @@ class RegisterButton extends StatelessWidget {
         TextMiniButton(
           "회원가입",
           onclick: () {},
-          padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4),
+          style: const TextStyle(
+            fontSize: 14,
+            letterSpacing: 14 * 0.02,
+            color: ColorStyle.text2,
+          ),
         ),
         Container(
           width: 1,
@@ -291,8 +298,13 @@ class RegisterButton extends StatelessWidget {
         ),
         TextMiniButton(
           "아이디찾기",
-          padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4),
           onclick: () {},
+          style: const TextStyle(
+            fontSize: 14,
+            letterSpacing: 14 * 0.02,
+            color: ColorStyle.text2,
+          ),
         ),
         Container(
           width: 1,
@@ -302,7 +314,12 @@ class RegisterButton extends StatelessWidget {
         TextMiniButton(
           "비밀번호 찾기",
           onclick: () {},
-          padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4),
+          style: const TextStyle(
+            fontSize: 14,
+            letterSpacing: 14 * 0.02,
+            color: ColorStyle.text2,
+          ),
         ),
       ],
     );

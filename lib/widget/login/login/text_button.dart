@@ -4,16 +4,16 @@ import '../../../style/MyStyle.dart';
 
 class TextMiniButton extends StatelessWidget {
   const TextMiniButton(
-      this.text, {
-        Key? key,
-        required this.onclick,
-       required this.padding,
-      }) : super(key: key);
+    this.text, {
+    Key? key,
+    required this.onclick,
+    required this.padding,
+    this.style,
+  }) : super(key: key);
   final VoidCallback onclick;
   final String text;
   final EdgeInsets padding;
-  // final double? height;
-  // final double? width;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +24,12 @@ class TextMiniButton extends StatelessWidget {
           padding: padding,
           child: Text(
             text,
-            style: const TextStyle(
-              fontSize: 14,
-              letterSpacing: 14 * 0.02,
-              color: ColorStyle.text2,
-            ),
+            style: style ??
+                const TextStyle(
+                  fontSize: 14,
+                  letterSpacing: 14 * 0.02,
+                  color: ColorStyle.text2,
+                ),
           ),
         ),
       ),
