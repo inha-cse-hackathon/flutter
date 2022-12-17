@@ -41,98 +41,66 @@ class MyProfile extends StatelessWidget {
       ),
     );
   }
+}
 
-  Container NickNameChange() {
+class ProfileImage extends StatelessWidget {
+  const ProfileImage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
-              padding: EdgeInsets.symmetric(horizontal: 11),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: 17,
-                  ),
-                  Text(
-                    '닉네임',
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w400,
-                      letterSpacing: -16.0 * 0.02,
-                      color: ColorStyle.text1,
-                    ),
-                  ),
-                  SizedBox(height: 5,),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Container(
+      height: 169,
+      decoration: BoxDecoration(
+        color: Colors.green,
+        borderRadius: BorderRadius.all(Radius.circular(5)),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            height: 99,
+            width: 99,
 
-                          height: 50,
-                          color: Colors.cyan,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Container(
-                        width: 109,
-                        height: 50,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xff5835E2))),
-                        child: Center(
-                          child: Text(
-                            '중복확인',
-                            style: TextStyle(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w400,
-                              letterSpacing: -16.0 * 0.02,
-                              color: Color(0xff5835E2),
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
+            decoration: BoxDecoration(
+              color: Color(0xffD9D9D9),
+              borderRadius: BorderRadius.all(Radius.circular(500)),
+            ),
+          ),
+          SizedBox(
+            width: 26,
+          ),
+          Container(
+            //color: Colors.red,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "침착한 비버",
+                  style: TextStyle(
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: -24.0 * 0.02,
+                    color: ColorStyle.text1,
                   ),
-                  SizedBox(height: 15,),
-                  Text(
-                    '아이디',
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w400,
-                      letterSpacing: -16.0 * 0.02,
-                      color: ColorStyle.text1,
-                    ),
+                ),
+                Text(
+                  "님 어서오세요",
+                  style: TextStyle(
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: -24.0 * 0.02,
+                    color: ColorStyle.text1,
                   ),
-                  SizedBox(height: 5,),
-                  Container(
-                    width: double.infinity,
-                    height: 50,
-                    color: Colors.lightGreenAccent,
-                  ),
-                  SizedBox(height: 17,),
-                  Text(
-                    '비밀번호 재설정',
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w400,
-                      letterSpacing: -16.0 * 0.02,
-                      color: ColorStyle.text1,
-                    ),
-                  ),
-                  SizedBox(height: 5,),
-                  Container(
-                    width: 280,
-                    height: 50,
-                    color: Colors.lightGreenAccent,
-                  ),
-                  SizedBox(height: 6,),
-                  Container(
-                    width: 280,
-                    height: 50,
-                    color: Colors.lightGreenAccent,
-                  ),
-                ],
-              ),
-            );
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
 
@@ -181,7 +149,11 @@ class ProfileChoose extends StatelessWidget {
               Container(
                 width: 54,
                 height: 54,
-                color: Colors.blue,
+
+                decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.all(Radius.circular(500)),
+                    ),
               ),
               SizedBox(
                 width: 10,
@@ -189,7 +161,10 @@ class ProfileChoose extends StatelessWidget {
               Container(
                 width: 54,
                 height: 54,
-                color: Colors.blue,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.all(Radius.circular(500)),
+                ),
               ),
               SizedBox(
                 width: 10,
@@ -197,7 +172,10 @@ class ProfileChoose extends StatelessWidget {
               Container(
                 width: 54,
                 height: 54,
-                color: Colors.blue,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.all(Radius.circular(500)),
+                ),
               ),
               SizedBox(
                 width: 10,
@@ -205,7 +183,10 @@ class ProfileChoose extends StatelessWidget {
               Container(
                 width: 54,
                 height: 54,
-                color: Colors.blue,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.all(Radius.circular(500)),
+                ),
               ),
               SizedBox(
                 width: 10,
@@ -213,7 +194,10 @@ class ProfileChoose extends StatelessWidget {
               Container(
                 width: 54,
                 height: 54,
-                color: Colors.blue,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.all(Radius.circular(500)),
+                ),
               ),
             ],
           ),
@@ -228,7 +212,10 @@ class ProfileChoose extends StatelessWidget {
               Container(
                 width: 54,
                 height: 54,
-                color: Colors.blue,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.all(Radius.circular(500)),
+                ),
               ),
               SizedBox(
                 width: 10,
@@ -236,7 +223,10 @@ class ProfileChoose extends StatelessWidget {
               Container(
                 width: 54,
                 height: 54,
-                color: Colors.blue,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.all(Radius.circular(500)),
+                ),
               ),
 
             ],
@@ -247,59 +237,106 @@ class ProfileChoose extends StatelessWidget {
   }
 }
 
-class ProfileImage extends StatelessWidget {
-  const ProfileImage({
+class NickNameChange extends StatelessWidget {
+  const NickNameChange({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 169,
-      decoration: BoxDecoration(
-        color: Colors.green,
-        borderRadius: BorderRadius.all(Radius.circular(5)),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+      padding: EdgeInsets.symmetric(horizontal: 11),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            height: 99,
-            width: 99,
-            color: Color(0xffD9D9D9),
-          ),
           SizedBox(
-            width: 26,
+            height: 17,
           ),
-          Container(
-            //color: Colors.red,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "침착한 비버",
-                  style: TextStyle(
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: -24.0 * 0.02,
-                    color: ColorStyle.text1,
-                  ),
-                ),
-                Text(
-                  "님 어서오세요",
-                  style: TextStyle(
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: -24.0 * 0.02,
-                    color: ColorStyle.text1,
-                  ),
-                ),
-              ],
+          Text(
+            '닉네임',
+            style: TextStyle(
+              fontSize: 16.0,
+              fontWeight: FontWeight.w400,
+              letterSpacing: -16.0 * 0.02,
+              color: ColorStyle.text1,
             ),
-          )
+          ),
+          SizedBox(height: 5,),
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+
+                  height: 50,
+                  color: Colors.cyan,
+                ),
+              ),
+              SizedBox(
+                width: 5,
+              ),
+              Container(
+                width: 109,
+                height: 50,
+                decoration: BoxDecoration(
+                    border: Border.all(color: Color(0xff5835E2))),
+                child: Center(
+                  child: Text(
+                    '중복확인',
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w400,
+                      letterSpacing: -16.0 * 0.02,
+                      color: Color(0xff5835E2),
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
+          SizedBox(height: 15,),
+          Text(
+            '아이디',
+            style: TextStyle(
+              fontSize: 16.0,
+              fontWeight: FontWeight.w400,
+              letterSpacing: -16.0 * 0.02,
+              color: ColorStyle.text1,
+            ),
+          ),
+          SizedBox(height: 5,),
+          Container(
+            width: double.infinity,
+            height: 50,
+            color: Colors.lightGreenAccent,
+          ),
+          SizedBox(height: 17,),
+          Text(
+            '비밀번호 재설정',
+            style: TextStyle(
+              fontSize: 16.0,
+              fontWeight: FontWeight.w400,
+              letterSpacing: -16.0 * 0.02,
+              color: ColorStyle.text1,
+            ),
+          ),
+          SizedBox(height: 5,),
+          Container(
+            width: 280,
+            height: 50,
+            color: Colors.lightGreenAccent,
+          ),
+          SizedBox(height: 6,),
+          Container(
+            width: 280,
+            height: 50,
+            color: Colors.lightGreenAccent,
+          ),
         ],
       ),
     );
   }
 }
+
+
+
+
