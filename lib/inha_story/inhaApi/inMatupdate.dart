@@ -13,7 +13,7 @@ class InMatUpdate extends InMatHttp {
       print("프로필 업데이트 실패!");
 
       if (response['code'] == 401) {
-        throw ExpirationAccessToken();
+
       } else if (response['code'] == 403) {
         throw AccessDenied();
       } else if (response['code'] == 3035) {

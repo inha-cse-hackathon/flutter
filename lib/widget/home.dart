@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../inha_story/InHaAuth.dart';
+
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -17,7 +19,7 @@ class _HomeState extends State<Home> {
           title: Text('홈'),
         ),
       ),
-      body: Container(),
+      body: Container(child: Text(InhaAuth.currentUser.toString()),),
     );
   }
 }

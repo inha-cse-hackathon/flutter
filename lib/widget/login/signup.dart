@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -18,7 +19,12 @@ class _SignUpPageState extends State<SignUpPage> {
         titleSpacing: 0,
         // leading: Container(color: Colors.blue,),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
+          icon:  SvgPicture.asset(
+            'assets/icons/back_arrow.svg',
+            width: 30,
+            height: 30,
+          ),
+
           onPressed: () {
             Navigator.pop(context);
             // 뒤로가기 버튼 누르면 이동하는 곳
