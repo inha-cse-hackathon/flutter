@@ -111,12 +111,12 @@ class OverlappingNickName implements Exception {
 }
 
 void main() async {
-  Uri uri = Uri.parse("http://44.195.225.206:8080/users/signup");
+  Uri uri = Uri.parse("http://54.83.101.17:8080/users/signup");
 
   var bodyJson = json.encode({
-    "nickName": "dsa",
-    "userid": "dsadas",
-    "userpw": "dsaadsa321?",
+    "name": "dsa",
+    "id": "dsadas",
+    "pw": "dsaadsa321?",
 
 
   });
@@ -134,7 +134,7 @@ void main() async {
 
 
   // 요청 성공하면 리턴
-  if (response.statusCode == 200) {
+  if (response.statusCode == 200||response.statusCode ==201) {
     print(response.body);
     //print(json.decode(utf8.decode(response.bodyBytes)));
    //print(json.decode(utf8.decode(response.bodyBytes)));
