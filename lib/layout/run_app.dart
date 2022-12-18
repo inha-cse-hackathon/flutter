@@ -1,5 +1,6 @@
 import 'package:cse_hackathon_2022/layout/image_upload.dart';
 import 'package:cse_hackathon_2022/layout/main_page.dart';
+import 'package:cse_hackathon_2022/layout/message.dart';
 import 'package:cse_hackathon_2022/layout/onboard.dart';
 import 'package:cse_hackathon_2022/layout/profile.dart';
 import 'package:cse_hackathon_2022/layout/ranking.dart';
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
         textTheme: MyTextTheme(),
         // backgroundColor: Colors.white,
       ),
-      home: const Ranking(),
+      home: const Message(),
     );
   }
 
