@@ -1,4 +1,5 @@
 import 'package:cse_hackathon_2022/style/MyStyle.dart';
+import 'package:cse_hackathon_2022/widget/NavigatePage.dart';
 import 'package:cse_hackathon_2022/widget/authcheck.dart';
 import 'package:cse_hackathon_2022/widget/google_signin/SignIn.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
         textTheme: MyTextTheme(),
         // backgroundColor: Colors.white,
       ),
-      home: const SignIn(),
+      home: NavigatePage(),//const SignIn(),
     );
   }
 

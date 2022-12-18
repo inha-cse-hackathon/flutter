@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 
 import 'dart:async';
 
+import '../NavigatePage.dart';
 import '../home.dart';
 import 'SignInButton.dart';
 import 'registerPage.dart';
@@ -42,7 +43,7 @@ class _SignInState extends State<SignIn> {
       Navigator.pushAndRemoveUntil(
         context,
         CupertinoPageRoute(
-          builder: (context) =>  Home(),
+          builder: (context) =>  NavigatePage(),
         ),
         (route) => false,
       );

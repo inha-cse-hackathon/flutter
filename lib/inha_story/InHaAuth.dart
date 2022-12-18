@@ -35,26 +35,24 @@ class InhaAuth {
   }
 
   static Future<void> signIn() async {
+    String? email = await googleLogin();
+    InhaToken.email = email;
 
-      String? email = await googleLogin();
-      InhaToken.email = email;
-
-      InMatGetProfile getProfile = InMatGetProfile();
-      Map<String, dynamic>? profile = await getProfile.getProfile(token: email);
-      if (profile == null) {
-        throw NoProfile();
-      } else {
-        InhaProfile.profile = profile;
-      }
-
-
+    InMatGetProfile getProfile = InMatGetProfile();
+    Map<String, dynamic>? profile = await getProfile.getProfile(token: email);
+    if (profile == null) {
+      throw NoProfile();
+    } else {
+      InhaProfile.profile = profile;
+    }
   }
 
-
-  static Future<void> signoutAndSignIn()async{
+  static Future<void> signOut() async {
     await _googleSignIn.signOut();
+  }
+
+  static Future<void> signoutAndSignIn() async {
+    await signOut();
     await signIn();
   }
-
-
 }

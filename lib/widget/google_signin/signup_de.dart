@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../inha_story/user.dart';
+import '../NavigatePage.dart';
 import '../home.dart';
 
 String depart='';
@@ -147,7 +148,7 @@ class _SignupDeState extends State<SignupDe> {
               Navigator.pushAndRemoveUntil(
                 context,
                 CupertinoPageRoute(
-                  builder: (context) =>  Home(),
+                  builder: (context) =>  NavigatePage(),
                 ),
                     (route) => false,
               );

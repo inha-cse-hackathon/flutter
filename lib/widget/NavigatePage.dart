@@ -1,4 +1,6 @@
 
+import 'package:cse_hackathon_2022/widget/Message.dart';
+import 'package:cse_hackathon_2022/widget/Ranking.dart';
 import 'package:cse_hackathon_2022/widget/profile.dart';
 import 'package:flutter/material.dart';
 
@@ -32,6 +34,8 @@ class _NavigatePageState extends State<NavigatePage> {
       unselectedItemColor: Colors.grey.withOpacity(.60),
       selectedFontSize: 14,
       unselectedFontSize: 12,
+      unselectedLabelStyle: TextStyle(fontFamily: "Roboto"),
+      selectedLabelStyle: TextStyle(fontFamily: "Roboto"),
 
       currentIndex: _selectedIndex,
       //현재 선택된 Index
@@ -46,24 +50,21 @@ class _NavigatePageState extends State<NavigatePage> {
       },
       items: const [
         BottomNavigationBarItem(
-          label: "홈",
+          label: "Home",
+
           icon: Icon(Icons.home),
         ),
-        // BottomNavigationBarItem(
-        //   label: "검색",
-        //   icon: Icon(Icons.search),
-        // ),
-        // BottomNavigationBarItem(
-        //   label: "랜덤",
-        //   icon: Icon(Icons.menu_book),
-        // ),
-        // BottomNavigationBarItem(
-        //   label: "커뮤니티",
-        //   icon: Icon(Icons.question_answer),
-        // ),
         BottomNavigationBarItem(
-          label: "내 정보",
-          icon: Icon(Icons.account_circle),
+          label: "Ranking",
+          icon: Icon(Icons.workspace_premium),
+        ),
+        BottomNavigationBarItem(
+          label: "Message",
+          icon: Icon(Icons.notifications),
+        ),
+        BottomNavigationBarItem(
+          label: "Profile",
+          icon: Icon(Icons.person),
         ),
       ],
     );
@@ -72,7 +73,11 @@ class _NavigatePageState extends State<NavigatePage> {
   List _widgetOptions() {
     return [
       const Home(),
+      const RankingPage(),
+
+      const Message(),
       const Profile(),
+
       // const RandomFoodSelect(),
       // const Community(),
       // const ProfilePage(),
