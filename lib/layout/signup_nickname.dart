@@ -43,7 +43,7 @@ class SignupNickname extends StatelessWidget {
                       letterSpacing: -32.0 * 0.02,
                       color: Color(0xff262626),
                     ),
-                  ),
+                  ),//
                   Text('이름이 뭐예요?',
                     style: TextStyle(
                       fontSize: 32.0,
