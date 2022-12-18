@@ -10,6 +10,7 @@
     <string>This app needs access to location when open and in the background.</string>
 
 
+
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>

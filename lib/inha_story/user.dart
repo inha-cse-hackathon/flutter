@@ -11,9 +11,9 @@ class InhaUser {
 
   final Map<String, dynamic> user;
 
-  String get email => user['userpw'] ?? "";
+  String get email => user['email'] ?? "";
   String get nickname => user['nickname'] ?? "";
-  String get department => user['userid'] ?? "";
+  String get department => user['department'] ?? "";
 
   @override
   String toString() {

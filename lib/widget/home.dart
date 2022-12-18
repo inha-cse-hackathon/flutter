@@ -6,7 +6,11 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import '../inha_story/InHaAuth.dart';
 import 'LocationQuest.dart';
+import 'dart:convert';
+import 'dart:io';
 
+import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 
 
 
@@ -95,7 +99,7 @@ class _HomeState extends State<Home> {
                 SizedBox(width: 4,),
                 Expanded(
                   child: InkWell(
-                    onTap: (){
+                    onTap: () async{
                       if(map['id']==1||map['id']==2){
                         Navigator.push(
                           context,
@@ -104,7 +108,34 @@ class _HomeState extends State<Home> {
                           ),
 
                         );
+                      }else {
+                        /////
+                        // Uri uri = Uri.parse('http://54.83.101.17:8080/manage/request');
+                        //
+                        // var bodyJson = json.encode(body);
+                        // final Response response = await http.post(
+                        //   uri,
+                        //   headers: {
+                        //     "Content-Type": "application/json",
+                        //     'Accept': 'application/json',
+                        //   },
+                        //   body: bodyJson,
+                        // );
+                        //
+                        // // 요청 성공하면 리턴
+                        // if (response.statusCode == 200||response.statusCode == 201) {
+                        //   //print(utf8.decode(response.bodyBytes));
+                        //   print(json.decode(utf8.decode(response.bodyBytes)));
+                        //   print("sda");
+                        //   return json.decode(utf8.decode(response.bodyBytes));
+                        // } else {
+                        //   throw Exception(
+                        //       'Failed to load post ${response.statusCode}, ${utf8.decode(response.bodyBytes)}');
+                        // }
+
+                        /////
                       }
+
                     },
                     child: Container(
 
