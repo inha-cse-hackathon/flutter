@@ -1,5 +1,8 @@
+import 'package:cse_hackathon_2022/layout/image_upload.dart';
 import 'package:cse_hackathon_2022/layout/main_page.dart';
 import 'package:cse_hackathon_2022/layout/onboard.dart';
+import 'package:cse_hackathon_2022/layout/profile.dart';
+import 'package:cse_hackathon_2022/layout/ranking.dart';
 import 'package:cse_hackathon_2022/layout/signup_department.dart';
 import 'package:cse_hackathon_2022/layout/signup_nickname.dart';
 import 'package:cse_hackathon_2022/style/MyStyle.dart';
@@ -21,7 +24,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -43,7 +45,7 @@ class MyApp extends StatelessWidget {
         textTheme: MyTextTheme(),
         // backgroundColor: Colors.white,
       ),
-      home: const MainPage(),
+      home: const Ranking(),
     );
   }
 
