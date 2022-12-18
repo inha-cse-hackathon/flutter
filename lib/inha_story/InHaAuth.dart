@@ -1,7 +1,15 @@
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'inhaApi/inMatProfile.dart';
+import 'inhaApi/inmatRegister.dart';
 import 'user.dart';
+
+class NoProfile implements Exception {
+  @override
+  String toString() {
+    return "프로필이 없습니다.";
+  }
+}
 
 class InhaAuth {
   static GoogleSignIn _googleSignIn = GoogleSignIn(
@@ -27,19 +35,18 @@ class InhaAuth {
   }
 
   static Future<void> signIn() async {
-    try {
+
       String? email = await googleLogin();
       InhaToken.email = email;
 
-      InMatGetProfile getProfile=InMatGetProfile();
-      Map<String, dynamic> profile= await getProfile.getProfile(token: email) ;
-      //print(profile);
+      InMatGetProfile getProfile = InMatGetProfile();
+      Map<String, dynamic>? profile = await getProfile.getProfile(token: email);
+      if (profile == null) {
+        throw NoProfile();
+      } else {
+        InhaProfile.profile = profile;
+      }
 
-      InhaProfile.profile=profile;
 
-      // 로그인 하면 처리하는 곳
-    } catch (error) {
-      print(error);
-    }
   }
 }

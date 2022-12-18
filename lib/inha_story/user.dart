@@ -16,7 +16,7 @@ class InhaUser {
 
   @override
   String toString() {
-    return"$email, $nickname";
+    return"user: $email, $nickname";
   }
 
 }

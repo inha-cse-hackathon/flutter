@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import 'dart:async';
 
 import 'SignInButton.dart';
+import 'registerPage.dart';
 
 
 
@@ -32,10 +33,20 @@ class _SignInState extends State<SignIn> {
     try{
       await InhaAuth.signIn();
     }
+    on NoProfile{
+      print("화원가입 이동");
+      Navigator.push(
+        context,
+        CupertinoPageRoute(
+          builder: (context) => const RegisterPage(email: "Dsa",),
+        ),
+      );
+
+    }
     catch(e){
       print(e);
     }
-    print(InhaAuth.currentUser);
+    //print(InhaAuth.currentUser);
   }
 
 
