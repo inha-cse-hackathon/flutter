@@ -1,11 +1,12 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:cupertino_icons/cupertino_icons.dart';
-
+import 'package:file_picker/file_picker.dart';
 import 'dart:io';
 import 'package:flutter/services.dart';
+
+
 
 class CameraExample extends StatefulWidget {
   const CameraExample({Key? key}) : super(key: key);
@@ -25,6 +26,27 @@ class _CameraExampleState extends State<CameraExample> {
     setState(() {
       _image = File(image!.path); // 가져온 이미지를 _image에 저장
     });
+  }
+
+  Future<void> uploadFile() async {
+    // file picker를 통해 파일 선택
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+    if (result != null) {
+      final filePath = result.files.single.path;
+
+      // 파일 경로를 통해 formData 생성
+      var dio = Dio();
+      var formData = FormData.fromMap({
+        'file' : await MultipartFile.fromFile(filePath!)
+      });
+
+      // 업로드 요청http://54.83.101.17:8080/getmainquests
+      final response = await dio.post('http://54.83.101.17:8080/upload', data: formData);
+print(response);
+    } else {
+      // 아무런 파일도 선택되지 않음.
+    }
   }
 
   // 이미지를 보여주는 위젯
@@ -53,7 +75,7 @@ class _CameraExampleState extends State<CameraExample> {
             SizedBox(height: 25.0),
             showImage(),
             SizedBox(
-              height: 50.0,
+              height: 30.0,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -76,8 +98,17 @@ class _CameraExampleState extends State<CameraExample> {
                   },
                 ),
               ],
-            )
+            ),
+            SizedBox(height: 20,),
+            FloatingActionButton(
+              child: Text('업로드'),
+              tooltip: 'pick Iamge',
+              onPressed: () {
+                uploadFile();
+              },
+            ),
           ],
-        ));
+        )
+    );
   }
 }
