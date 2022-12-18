@@ -12,19 +12,19 @@ class Profile extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        toolbarHeight: 40.0,
+        // toolbarHeight: 40.0,
         title: const Text('Profile'),
         // leadingWidth: 10,
-        titleSpacing: 100,
+        // titleSpacing: 100,
         // leading: Container(color: Colors.blue,),
-        leading: IconButton(
-          icon: const Icon(Icons.onetwothree_sharp),
-          onPressed: () {
-            Navigator.pop(context);
-            // 뒤로가기 버튼 누르면 이동하는 곳
-          },
-        ),
-        actions: [Icon(Icons.ice_skating)],
+        // leading: IconButton(
+        //   icon: const Icon(Icons.onetwothree_sharp),
+        //   onPressed: () {
+        //     Navigator.pop(context);
+        //     // 뒤로가기 버튼 누르면 이동하는 곳
+        //   },
+        // ),
+        // actions: [Icon(Icons.ice_skating)],
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
@@ -54,6 +54,7 @@ class Profile extends StatelessWidget {
                       children: [
                         Text(
                           '${InhaAuth.currentUser.email}',
+                          overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.w700,

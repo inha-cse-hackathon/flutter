@@ -174,7 +174,7 @@ appBar: AppBar(backgroundColor: Colors.transparent,),
                   ),
                 ),
               ),
-              SizedBox(height: 11,),
+              SizedBox(height: 14,),
               InkWell(
                 onTap: (){
                   register();
@@ -188,7 +188,7 @@ appBar: AppBar(backgroundColor: Colors.transparent,),
                   ),
                 ),
               ),
-              SizedBox(height: 24,),
+              SizedBox(height: 30,),
             ],
           ),
         )

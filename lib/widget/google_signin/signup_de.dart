@@ -52,142 +52,139 @@ class _SignupDeState extends State<SignupDe> {
         padding: EdgeInsets.fromLTRB(17, 0, 17, 0),
         child: Container(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              SizedBox(height: 41,),
+              Text('잘했어요!',
+                style: TextStyle(
+                  fontSize: 32.0,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: -32.0 * 0.02,
+                  color: Color(0xff262626),
+                ),
+              ),
+              Text('이제 학과만 알려주세요!',
+                style: TextStyle(
+                  fontSize: 32.0,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: -32.0 * 0.02,
+                  color: Color(0xff262626),
+                ),
+              ),
+              SizedBox(height: 25,),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 41,),
-                  Text('잘했어요!',
-                    style: TextStyle(
-                      fontSize: 32.0,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: -32.0 * 0.02,
-                      color: Color(0xff262626),
-                    ),
+                  LoginField(
+                    onChanged: (text) {
+                      depart=text;
+                      warning=false;
+                      setState(() {
+
+                      });
+                    },
+                    onDelete: () {
+                      depart='';
+                      warning=false;
+                      setState(() {
+
+                      });
+                    },
+                    hint: "학과를 입력하세요",
                   ),
-                  Text('이제 학과만 알려주세요!',
-                    style: TextStyle(
-                      fontSize: 32.0,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: -32.0 * 0.02,
-                      color: Color(0xff262626),
-                    ),
-                  ),
-                  SizedBox(height: 25,),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      LoginField(
-                        onChanged: (text) {
-                          depart=text;
-                          warning=false;
-                          setState(() {
-
-                          });
-                        },
-                        onDelete: () {
-                          depart='';
-                          warning=false;
-                          setState(() {
-
-                          });
-                        },
-                        hint: "학과를 입력하세요",
-                      ),
-                    ],
-                  ),
-                  // AnimatedContainer(
-                  //   height: warning ? 20 : 0,
-                  //   duration: const Duration(seconds: 1),
-                  //   curve: Curves.easeOutQuart,
-                  //   child: const Text(
-                  //     "닉네임을 입력 해 주세요",
-                  //     style: TextStyle(fontSize: 14, color: Color(0xffFF3122)),
-                  //   ),
-                  // ),
-
-                  //Expanded(child: Container(),),
-
                 ],
               ),
-            ],
-          ),
-        ),
-      ),
-      floatingActionButton: InkWell(
-        onTap: ()async{
+              // AnimatedContainer(
+              //   height: warning ? 20 : 0,
+              //   duration: const Duration(seconds: 1),
+              //   curve: Curves.easeOutQuart,
+              //   child: const Text(
+              //     "닉네임을 입력 해 주세요",
+              //     style: TextStyle(fontSize: 14, color: Color(0xffFF3122)),
+              //   ),
+              // ),
+              Spacer(),
 
-          if(depart!=''){
-            print(widget.email);
-            print(widget.nickname);
-            print(depart);
 
-            InMatRegister inMatRegister = InMatRegister();
-            await inMatRegister.registerEmail(user: {
-              'nickname': widget.nickname,
-              'department': '컴퓨터공학과',
-              'email': widget.email
-            });
 
-            InMatGetProfile getProfile = InMatGetProfile();
-            Map<String, dynamic>? profile = await getProfile.getProfile(token: widget.email);
-            if (profile == null) {
-              Fluttertoast.showToast(
-                  msg: '오류: 정보를 가져올 수 없습니다',
-                  toastLength: Toast.LENGTH_SHORT,
-                  gravity: ToastGravity.BOTTOM,
-                  timeInSecForIosWeb: 1,
-                  textColor: Colors.white,
-                  fontSize: 16.0);
-            } else {
-              InhaProfile.profile = profile;
+              //Expanded(child: Container(),),
+              InkWell(
+                onTap: ()async{
 
-              print("프로필 저장:");
-              print(profile.toString());
-              Navigator.pushAndRemoveUntil(
-                context,
-                CupertinoPageRoute(
-                  builder: (context) =>  NavigatePage(),
+                  if(depart!=''){
+                    print(widget.email);
+                    print(widget.nickname);
+                    print(depart);
+
+                    InMatRegister inMatRegister = InMatRegister();
+                    await inMatRegister.registerEmail(user: {
+                      'nickname': widget.nickname,
+                      'department': '컴퓨터공학과',
+                      'email': widget.email
+                    });
+
+                    InMatGetProfile getProfile = InMatGetProfile();
+                    Map<String, dynamic>? profile = await getProfile.getProfile(token: widget.email);
+                    if (profile == null) {
+                      Fluttertoast.showToast(
+                          msg: '오류: 정보를 가져올 수 없습니다',
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 1,
+                          textColor: Colors.white,
+                          fontSize: 16.0);
+                    } else {
+                      InhaProfile.profile = profile;
+
+                      print("프로필 저장:");
+                      print(profile.toString());
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        CupertinoPageRoute(
+                          builder: (context) =>  NavigatePage(),
+                        ),
+                            (route) => false,
+                      );
+                    }
+
+
+
+                    // Navigator.push(
+                    //   context,
+                    //   CupertinoPageRoute(
+                    //     builder: (context) =>  SignupDe(email: widget.email,nickname: name),
+                    //   ),
+                    // );
+                  }else{
+                    warning=true;
+                    setState(() {
+
+                    });
+                  }
+                },
+                child: Container(
+                  width: 320,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: Color(0xffE24035),
+                    borderRadius: BorderRadius.all(Radius.circular(3)),
+                  ),
+                  child: Center(
+                    child: Text('회원가입',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: -18.0 * 0.02,
+                        color: Color(0xffFFFFFF),
+                      ),),
+                  ),
                 ),
-                    (route) => false,
-              );
-            }
-
-
-
-            // Navigator.push(
-            //   context,
-            //   CupertinoPageRoute(
-            //     builder: (context) =>  SignupDe(email: widget.email,nickname: name),
-            //   ),
-            // );
-          }else{
-            warning=true;
-            setState(() {
-
-            });
-          }
-        },
-        child: Container(
-          width: 320,
-          height: 50,
-          decoration: BoxDecoration(
-            color: Color(0xffE24035),
-            borderRadius: BorderRadius.all(Radius.circular(3)),
-          ),
-          child: Center(
-            child: Text('회원가입',
-              style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.w700,
-                letterSpacing: -18.0 * 0.02,
-                color: Color(0xffFFFFFF),
-              ),),
-          ),
+              ),
+              SizedBox(height: 30,),
+            ],
+          )
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
       // floatingActionButton:  InkWell(
       //   onTap: (){
@@ -303,16 +300,9 @@ class DeleteButton extends StatelessWidget {
             Radius.circular(30),
           ),
           onTap: onclick,
-          child: Center(
-            child: Container(
-              width: 14,
-              height: 14,
-              decoration: BoxDecoration(
-                color: warning? Color(0xffFFA6A6): Color(0xffDBDBDB),
-                borderRadius: const BorderRadius.all(Radius.circular(30)),
-              ),
-            ),
-          ),
+         child: Icon(
+          Icons.clear,
+        ),
         ),
       ),
     );

@@ -227,16 +227,19 @@ class DeleteButton extends StatelessWidget {
             Radius.circular(30),
           ),
           onTap: onclick,
-          child: Center(
-            child: Container(
-              width: 14,
-              height: 14,
-              decoration: BoxDecoration(
-                color: warning? Color(0xffFFA6A6): Color(0xffDBDBDB),
-                borderRadius: const BorderRadius.all(Radius.circular(30)),
-              ),
-            ),
+          child: Icon(
+            Icons.clear,
           ),
+          // child: Center(
+          //   child: Container(
+          //     width: 14,
+          //     height: 14,
+          //     decoration: BoxDecoration(
+          //       color: warning? Color(0xffFFA6A6): Color(0xffDBDBDB),
+          //       borderRadius: const BorderRadius.all(Radius.circular(30)),
+          //     ),
+          //   ),
+          // ),
         ),
       ),
     );

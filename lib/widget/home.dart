@@ -50,7 +50,7 @@ class _HomeState extends State<Home> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              width: 348,
+              // width: 348,
               height: 202,
               color: Colors.lightGreenAccent,
               child: Center(child: Text('${map['image']}')),
