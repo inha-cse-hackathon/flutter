@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import '../../../inha/auth/inmat_auth.dart';
-import '../../../inha/inhaApi/inhaHttp.dart';
 
 void showMessage(String text) {
   Fluttertoast.showToast(

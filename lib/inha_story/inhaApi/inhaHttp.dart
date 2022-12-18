@@ -5,7 +5,7 @@ import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 
 class InMatHttp {
-  Future<Map> publicGet({required String url, required String token}) async {
+  Future<Map> publicGet({required String url,}) async {
     Uri uri = Uri.parse(url);
 
     final Response response = await http.get(
@@ -13,12 +13,12 @@ class InMatHttp {
       headers: {
         "Content-Type": "application/json",
         'Accept': 'application/json',
-        'Authorization': 'Bearer $token',
+        //'Authorization': 'Bearer $token',
       },
     );
 
     // 요청 성공하면 리턴
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200||response.statusCode == 201) {
       print(json.decode(utf8.decode(response.bodyBytes)));
       return json.decode(utf8.decode(response.bodyBytes));
     } else {
@@ -41,8 +41,10 @@ class InMatHttp {
     );
 
     // 요청 성공하면 리턴
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200||response.statusCode == 201) {
+      //print(utf8.decode(response.bodyBytes));
       print(json.decode(utf8.decode(response.bodyBytes)));
+      print("sda");
       return json.decode(utf8.decode(response.bodyBytes));
     } else {
       throw Exception(
@@ -65,7 +67,7 @@ class InMatHttp {
     );
 
     // 요청 성공하면 리턴
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200||response.statusCode == 201) {
       print(json.decode(utf8.decode(response.bodyBytes)));
       return json.decode(utf8.decode(response.bodyBytes));
     } else {
@@ -75,12 +77,7 @@ class InMatHttp {
   }
 }
 
-class ExpirationAccessToken implements Exception {
-  @override
-  String toString() {
-    return "액세스 토큰이 만료되었습니다.";
-  }
-}
+
 
 class SignInFailed implements Exception {
   @override
@@ -111,14 +108,12 @@ class OverlappingNickName implements Exception {
 }
 
 void main() async {
-  Uri uri = Uri.parse("http://44.195.225.206:8080/users/signup");
+  Uri uri = Uri.parse("http://54.83.101.17:8080/users/signup");
 
   var bodyJson = json.encode({
-    "nickName": "dsa",
-    "userid": "dsadas",
-    "userpw": "dsaadsa321?",
-
-
+    'nickname':'name',
+    'department':'depart',
+    'email':'odsa@dsad.dsa'
   });
   final Response response = await http.post(
     uri,
@@ -127,14 +122,14 @@ void main() async {
       'Accept': 'application/json',
       //HttpHeaders.authorizationHeader: "Basic $token"
     },
-   body: bodyJson,
+  body: bodyJson,
   );
  // print(bodyJson);
 
 
 
   // 요청 성공하면 리턴
-  if (response.statusCode == 200) {
+  if (response.statusCode == 200||response.statusCode ==201) {
     print(response.body);
     //print(json.decode(utf8.decode(response.bodyBytes)));
    //print(json.decode(utf8.decode(response.bodyBytes)));
