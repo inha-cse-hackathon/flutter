@@ -1,4 +1,3 @@
-import 'package:cse_hackathon_2022/layout/on.dart';
 import 'package:cse_hackathon_2022/layout/onboard.dart';
 import 'package:cse_hackathon_2022/layout/signup_nickname.dart';
 import 'package:cse_hackathon_2022/style/MyStyle.dart';

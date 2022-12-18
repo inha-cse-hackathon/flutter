@@ -84,7 +84,7 @@ class OnBoard extends StatelessWidget {
                 width: 343,
                 height: 50,
                 decoration: BoxDecoration(
-                  color: Color(0xff5835E2),
+                  color: Color(0xffE24035),
                   borderRadius: BorderRadius.all(Radius.circular(3)),
                 ),
 
@@ -105,7 +105,7 @@ class OnBoard extends StatelessWidget {
                   fontSize: 18.0,
                   fontWeight: FontWeight.w400,
                   letterSpacing: -18.0 * 0.02,
-                  color: Color(0xff5835E2),
+                  color: Color(0xffE24035),
                 ),
               ),
             ],
