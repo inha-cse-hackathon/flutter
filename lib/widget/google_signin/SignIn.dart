@@ -11,6 +11,7 @@ import 'dart:async';
 
 import 'SignInButton.dart';
 import 'registerPage.dart';
+import 'signup_nickname.dart';
 
 
 
@@ -31,6 +32,7 @@ class _SignInState extends State<SignIn> {
 
   Future<void> _handleSignIn() async {
     try{
+      throw NoProfile();
       await InhaAuth.signIn();
     }
     on NoProfile{
@@ -38,7 +40,7 @@ class _SignInState extends State<SignIn> {
       Navigator.push(
         context,
         CupertinoPageRoute(
-          builder: (context) => const RegisterPage(email: "Dsa",),
+          builder: (context) => const SignupNickname(email: "Dsa",),
         ),
       );
 
