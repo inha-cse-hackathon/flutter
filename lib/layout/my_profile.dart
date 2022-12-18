@@ -2,46 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../style/MyStyle.dart';
 
-class MyProfile extends StatelessWidget {
-  const MyProfile({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        toolbarHeight: 45.0,
-        title: const Text('샘플 페이지'),
-        // leadingWidth: 10,
-        titleSpacing: 0,
-        // leading: Container(color: Colors.blue,),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
-          onPressed: () {
-            Navigator.pop(context);
-            // 뒤로가기 버튼 누르면 이동하는 곳
-          },
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            children: [
-              ProfileImage(),
-              SizedBox(height: 6),
-              ProfileChoose(),
-              SizedBox(
-                height: 6,
-              ),
-              NickNameChange()
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
 
 class ProfileImage extends StatelessWidget {
   const ProfileImage({
