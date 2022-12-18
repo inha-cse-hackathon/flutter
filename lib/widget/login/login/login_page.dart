@@ -20,7 +20,7 @@ class LoginPage extends StatelessWidget {
         // leadingWidth: 10,
         titleSpacing: 0,
         // leading: Container(color: Colors.blue,),
-leadingWidth: 40,
+        leadingWidth: 40,
         leading: IconButton(
           icon:  SvgPicture.asset(
             'assets/icons/back_arrow.svg',
