@@ -1,5 +1,6 @@
 import 'package:cse_hackathon_2022/style/MyStyle.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 import 'login_model.dart';
@@ -19,8 +20,14 @@ class LoginPage extends StatelessWidget {
         // leadingWidth: 10,
         titleSpacing: 0,
         // leading: Container(color: Colors.blue,),
+leadingWidth: 40,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
+          icon:  SvgPicture.asset(
+            'assets/icons/back_arrow.svg',
+            width: 13,
+            height: 13,
+          ),
+
           onPressed: () {
             Navigator.pop(context);
             // 뒤로가기 버튼 누르면 이동하는 곳
