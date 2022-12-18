@@ -11,12 +11,14 @@ class InhaUser {
 
   final Map<String, dynamic> user;
 
-  String get email => user['email'] ?? "";
+  String get email => user['userpw'] ?? "";
   String get nickname => user['nickname'] ?? "";
+  String get department => user['userid'] ?? "";
 
   @override
   String toString() {
-    return"user: $email, $nickname";
+    //return InhaProfile.profile.toString();
+    return"user: $email, $nickname, $department";
   }
 
 }

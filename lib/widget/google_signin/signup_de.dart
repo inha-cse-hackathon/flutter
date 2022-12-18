@@ -1,28 +1,28 @@
+import 'package:cse_hackathon_2022/inha_story/inhaApi/inMatProfile.dart';
+import 'package:cse_hackathon_2022/inha_story/inhaApi/inmatRegister.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../../inha_story/inhaApi/inMatProfile.dart';
-import '../../inha_story/inhaApi/inmatRegister.dart';
 import '../../inha_story/user.dart';
 import '../home.dart';
-import 'signup_de.dart';
 
-String name='';
+String depart='';
 
 bool warning=false;
 
-class SignupNickname extends StatefulWidget {
-  const SignupNickname({Key? key,required this.email}) : super(key: key);
+class SignupDe extends StatefulWidget {
+  const SignupDe({Key? key,required this.email,required this.nickname}) : super(key: key);
 
 
   final String email;
+  final String nickname;
 
   @override
-  State<SignupNickname> createState() => _SignupNicknameState();
+  State<SignupDe> createState() => _SignupDeState();
 }
 
-class _SignupNicknameState extends State<SignupNickname> {
+class _SignupDeState extends State<SignupDe> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +57,7 @@ class _SignupNicknameState extends State<SignupNickname> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 41,),
-                  Text('어서오세요, 용사님!',
+                  Text('잘했어요!',
                     style: TextStyle(
                       fontSize: 32.0,
                       fontWeight: FontWeight.w700,
@@ -65,7 +65,7 @@ class _SignupNicknameState extends State<SignupNickname> {
                       color: Color(0xff262626),
                     ),
                   ),
-                  Text('이름이 뭐예요?',
+                  Text('이제 학과만 알려주세요!',
                     style: TextStyle(
                       fontSize: 32.0,
                       fontWeight: FontWeight.w700,
@@ -79,70 +79,145 @@ class _SignupNicknameState extends State<SignupNickname> {
                     children: [
                       LoginField(
                         onChanged: (text) {
-                          name=text;
+                          depart=text;
                           warning=false;
                           setState(() {
 
                           });
                         },
                         onDelete: () {
-                          name='';
+                          depart='';
                           warning=false;
                           setState(() {
 
                           });
                         },
-                        hint: "닉네임을 입력하세요",
+                        hint: "학과를 입력하세요",
                       ),
                     ],
                   ),
-                  AnimatedContainer(
-                    height: warning ? 20 : 0,
-                    duration: const Duration(seconds: 1),
-                    curve: Curves.easeOutQuart,
-                    child: const Text(
-                      "닉네임을 입력 해 주세요",
-                      style: TextStyle(fontSize: 14, color: Color(0xffFF3122)),
-                    ),
-                  ),
+                  // AnimatedContainer(
+                  //   height: warning ? 20 : 0,
+                  //   duration: const Duration(seconds: 1),
+                  //   curve: Curves.easeOutQuart,
+                  //   child: const Text(
+                  //     "닉네임을 입력 해 주세요",
+                  //     style: TextStyle(fontSize: 14, color: Color(0xffFF3122)),
+                  //   ),
+                  // ),
+
+                  //Expanded(child: Container(),),
+
                 ],
               ),
             ],
           ),
         ),
       ),
-
-      floatingActionButton:  InkWell(
+      floatingActionButton: InkWell(
         onTap: ()async{
-          if(name!=''){
-            print(widget.email);
-            print(name);
 
-            Navigator.push(
-              context,
-              CupertinoPageRoute(
-                builder: (context) =>  SignupDe(email: widget.email,nickname: name),
-              ),
-            );
+          if(depart!=''){
+            print(widget.email);
+            print(widget.nickname);
+            print(depart);
+
+            InMatRegister inMatRegister = InMatRegister();
+            await inMatRegister.registerEmail(user: {
+              'nickname': widget.nickname,
+              'department': '컴퓨터공학과',
+              'email': widget.email
+            });
+
+            InMatGetProfile getProfile = InMatGetProfile();
+            Map<String, dynamic>? profile = await getProfile.getProfile(token: widget.email);
+            if (profile == null) {
+              Fluttertoast.showToast(
+                  msg: '오류: 정보를 가져올 수 없습니다',
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.BOTTOM,
+                  timeInSecForIosWeb: 1,
+                  textColor: Colors.white,
+                  fontSize: 16.0);
+            } else {
+              InhaProfile.profile = profile;
+
+              print("프로필 저장:");
+              print(profile.toString());
+              Navigator.pushAndRemoveUntil(
+                context,
+                CupertinoPageRoute(
+                  builder: (context) =>  Home(),
+                ),
+                    (route) => false,
+              );
+            }
+
+
+
+            // Navigator.push(
+            //   context,
+            //   CupertinoPageRoute(
+            //     builder: (context) =>  SignupDe(email: widget.email,nickname: name),
+            //   ),
+            // );
           }else{
             warning=true;
             setState(() {
 
             });
           }
-
-
         },
         child: Container(
-          width: 60,
-          height: 60,
+          width: 320,
+          height: 50,
           decoration: BoxDecoration(
             color: Color(0xffE24035),
-            borderRadius: BorderRadius.all(Radius.circular(30)),
+            borderRadius: BorderRadius.all(Radius.circular(3)),
           ),
-          child: Icon(Icons.arrow_forward_sharp,color: Colors.white,size: 30,),
+          child: Center(
+            child: Text('회원가입',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.w700,
+                letterSpacing: -18.0 * 0.02,
+                color: Color(0xffFFFFFF),
+              ),),
+          ),
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
+      // floatingActionButton:  InkWell(
+      //   onTap: (){
+      //     if(depart!=''){
+      //       print(widget.email);
+      //       print(depart);
+      //       Navigator.push(
+      //         context,
+      //         CupertinoPageRoute(
+      //           builder: (context) => const SignupDe(email: "Dsa",),
+      //         ),
+      //       );
+      //     }else{
+      //       warning=true;
+      //       setState(() {
+      //
+      //       });
+      //     }
+      //
+      //
+      //   },
+      //   child: Container(
+      //     width: 60,
+      //     height: 60,
+      //     decoration: BoxDecoration(
+      //       color: Color(0xffE24035),
+      //       borderRadius: BorderRadius.all(Radius.circular(30)),
+      //     ),
+      //     child: Icon(Icons.arrow_forward_sharp,color: Colors.white,size: 30,),
+      //   ),
+      // ),
     );
 
   }

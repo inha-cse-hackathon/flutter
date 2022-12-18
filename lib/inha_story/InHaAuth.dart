@@ -14,8 +14,8 @@ class NoProfile implements Exception {
 class InhaAuth {
   static GoogleSignIn _googleSignIn = GoogleSignIn(
     scopes: [
-      'email',
-      'https://www.googleapis.com/auth/contacts.readonly',
+      // 'email',
+      // 'https://www.googleapis.com/auth/contacts.readonly',
     ],
   );
 
@@ -49,4 +49,12 @@ class InhaAuth {
 
 
   }
+
+
+  static Future<void> signoutAndSignIn()async{
+    await _googleSignIn.signOut();
+    await signIn();
+  }
+
+
 }

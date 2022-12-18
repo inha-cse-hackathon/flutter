@@ -27,7 +27,10 @@ class InMatGetProfile extends InMatHttp {
     //print(response);
     //print(response.isEmpty);
     print(response);
-    return {};
+    //Map<String, dynamic>? returnMap;
+   // returnMap=response.cast<String, dynamic>();
+
+    return response.cast<String, dynamic>();
   }
 }
 
