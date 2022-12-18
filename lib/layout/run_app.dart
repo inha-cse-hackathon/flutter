@@ -1,4 +1,5 @@
 import 'package:cse_hackathon_2022/layout/onboard.dart';
+import 'package:cse_hackathon_2022/layout/signup_department.dart';
 import 'package:cse_hackathon_2022/layout/signup_nickname.dart';
 import 'package:cse_hackathon_2022/style/MyStyle.dart';
 import 'package:cse_hackathon_2022/widget/authcheck.dart';
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
         textTheme: MyTextTheme(),
         // backgroundColor: Colors.white,
       ),
-      home: const SignupNickname(),
+      home: const SignupDepart(),
     );
   }
 
