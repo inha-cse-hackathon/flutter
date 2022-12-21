@@ -1,11 +1,11 @@
-import 'package:cse_hackathon_2022/inha_story/inhaApi/InMatCheckNickname.dart';
+import 'package:cse_hackathon_2022/inha_quest/inhaApi/InMatCheckNickname.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../inha_story/InHaAuth.dart';
-import 'LocationQuest.dart';
+import '../inha_quest/InHaAuth.dart';
+import 'mission/LocationQuest.dart';
 import 'dart:convert';
 import 'dart:io';
 

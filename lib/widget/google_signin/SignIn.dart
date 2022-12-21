@@ -1,6 +1,6 @@
-import 'package:cse_hackathon_2022/inha/google/GoogleLogin.dart';
-import 'package:cse_hackathon_2022/inha_story/InHaAuth.dart';
-import 'package:cse_hackathon_2022/inha_story/user.dart';
+
+import 'package:cse_hackathon_2022/inha_quest/InHaAuth.dart';
+import 'package:cse_hackathon_2022/inha_quest/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'mission/jungseok.dart';
+import 'jungseok.dart';
 
 class LocationQuest extends StatefulWidget {
   const LocationQuest({Key? key, required this.map}) : super(key: key);

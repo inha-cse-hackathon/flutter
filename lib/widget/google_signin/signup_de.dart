@@ -1,10 +1,10 @@
-import 'package:cse_hackathon_2022/inha_story/inhaApi/inMatProfile.dart';
-import 'package:cse_hackathon_2022/inha_story/inhaApi/inmatRegister.dart';
+import 'package:cse_hackathon_2022/inha_quest/inhaApi/inMatProfile.dart';
+import 'package:cse_hackathon_2022/inha_quest/inhaApi/inmatRegister.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../../inha_story/user.dart';
+import '../../inha_quest/user.dart';
 import '../NavigatePage.dart';
 import '../home.dart';
 

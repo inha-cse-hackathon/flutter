@@ -1,10 +1,12 @@
 import 'package:cse_hackathon_2022/widget/NavigatePage.dart';
-import 'package:cse_hackathon_2022/widget/login/login/login_page.dart';
-import 'package:cse_hackathon_2022/widget/login/signup.dart';
+
 import 'package:cse_hackathon_2022/widget/profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:xtyle/xtyle.dart';
+
+import 'email_login/login/login_page.dart';
+import 'email_login/signup.dart';
 
 class AuthCheck extends StatefulWidget {
   const AuthCheck({super.key});

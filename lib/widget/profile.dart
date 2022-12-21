@@ -1,4 +1,4 @@
-import 'package:cse_hackathon_2022/inha_story/InHaAuth.dart';
+import 'package:cse_hackathon_2022/inha_quest/InHaAuth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

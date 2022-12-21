@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../../inha_story/inhaApi/inMatProfile.dart';
-import '../../inha_story/inhaApi/inmatRegister.dart';
-import '../../inha_story/user.dart';
+import '../../inha_quest/inhaApi/inMatProfile.dart';
+import '../../inha_quest/inhaApi/inmatRegister.dart';
+import '../../inha_quest/user.dart';
 import '../home.dart';
 import 'signup_de.dart';
 
